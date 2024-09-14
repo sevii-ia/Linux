@@ -9,20 +9,17 @@ create database zabbix character set utf8mb4 collate utf8mb4_bin;
 create user zabbix@localhost identified by 'password';
 grant all privileges on zabbix.* to zabbix@localhost;
 set global log_bin_trust_function_creators = 1;
-EXIT;
 MYSQL_SCRIPT
 
 zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p'password' zabbix
 
 sudo mysql -u root <<MYSQL_SCRIPT
 set global log_bin_trust_function_creators = 0;
-EXIT;
 MYSQL_SCRIPT
 
 sudo sed -i "s/^# DBPassword=.*/DBPassword=password/" /etc/zabbix/zabbix_server.conf
 
-sudo sed -i "s/# listen 8080;/listen 80;/; s/# server_name example.com;/server_name 192.168.1.215;/" /etc/zabbix/nginx.conf
+sudo sed -i -e 's/# listen 8080;/listen 80;/' -e 's/# server_name example.com;/server_name 192.168.1.215;/' /etc/zabbix/nginx.conf
 
 systemctl restart zabbix-server zabbix-agent nginx php8.3-fpm
 systemctl enable zabbix-server zabbix-agent nginx php8.3-fpm
-
