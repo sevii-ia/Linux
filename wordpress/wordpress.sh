@@ -14,9 +14,9 @@ EXIT;
 MYSQL_SCRIPT
 
 cd /tmp/ && wget https://wordpress.org/latest.zip
-unzip latest.zip -d /var/www
-chown -R www-data:www-data /var/www/wordpress/
-mv /home/ubuntu/Desktop/wp-config.php /var/www/wordpress/wp-config.php
+unzip latest.zip -d /var/www/html
+chown -R www-data:www-data /var/www/html/wordpress/
+mv /home/ubuntu/Desktop/wp-config.php /var/www/html/wordpress/wp-config.php
 
 mv /home/ubuntu/Desktop/wordpress.conf /etc/nginx/conf.d/wordpress.conf
 
