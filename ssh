@@ -1,0 +1,3 @@
+ssh-keygen -t ed25519 -C "vsevolod0823@gmail.com"
+
+git clone git@github.com:sevii-ia/CMP311.git
