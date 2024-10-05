@@ -1,3 +1,9 @@
 ssh-keygen -t ed25519 -C "vsevolod0823@gmail.com"
 
 git clone git@github.com:sevii-ia/CMP311.git
+
+git config --global user.email "vsevolod0823@gmail.com"
+git config --global user.name "Vsevolod"
+
+git add 1111.txt
+git commit -m "fgfdgdf"
